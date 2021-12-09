@@ -4,4 +4,6 @@ WORKDIR catkin_ws
 
 RUN echo "hello world" > readme
 
+COPY myfolder ./myfolder
 
+CMD echo "hey"
