@@ -61,19 +61,17 @@ jobs:
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/finealpine2:latest
           
       #######################################################################################################
-      - name: Snyk Container Test
-        continue-on-error: true
-        uses: snyk/actions/docker@master
-        env:
-          SNYK_TOKEN: ${{ Secrets.SNYK_TOKEN }}
+      - name: GHA Trivy
+        # You may pin to the exact commit or the version.
+        # uses: dataswift/gha-trivy@3ce3259ca6c568d562f73129a3e448558f758196
+        uses: dataswift/gha-trivy@v3.0.2
         with:
-          image: goof:develop
-          args: --file=Dockerfile
-          
-      - name: Upload Container Scan results to GitHub Code Scanning
-        uses: github/codeql-action/upload-sarif@v1
-        with:
-          sarif_file: snyk.sarif
+          # The target image name of vulnerability scan (specify this parameter or "IMAGE_NAME" environment variable
+          image: finealpine:latest
+          # GitHub access token used to create a issue
+          token: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+          # Whether the action should fail if a vulnerability was found
+          fail_on_vulnerabilities: false
       #######################################################################################################
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
