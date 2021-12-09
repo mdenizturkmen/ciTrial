@@ -8,7 +8,7 @@ on:
   push:
     branches: [ master ]
     paths: 
-      - 'myfolder/**'
+      - 'Dockerfile'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -52,15 +52,6 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/finealpine:latest
-      
-      - name: Build and push2
-        id: docker_build2
-        uses: docker/build-push-action@v2
-        with:
-          context: ./
-          file: ./myfolder/Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/finealpine2:latest
           
       #######################################################################################################
       
