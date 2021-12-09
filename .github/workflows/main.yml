@@ -50,6 +50,15 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/finealpine:latest
+      
+      - name: Build and push2
+        id: docker_build2
+        uses: docker/build-push-action@v2
+        with:
+          context: ./
+          file: ./myfolder/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/finealpine2:latest
       #######################################################################################################
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
