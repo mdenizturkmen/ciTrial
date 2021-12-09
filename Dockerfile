@@ -6,4 +6,4 @@ RUN echo "hello world" > readme
 
 COPY myfolder ./myfolder
 
-CMD echo "hey, how you doin"
+CMD echo "hey, ho"
