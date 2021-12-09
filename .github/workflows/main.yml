@@ -67,9 +67,9 @@ jobs:
         uses: dataswift/gha-trivy@v3.0.2
         with:
           # The target image name of vulnerability scan (specify this parameter or "IMAGE_NAME" environment variable
-          image: finealpine:latest
+          image: ${{ secrets.DOCKER_HUB_USERNAME }}/finealpine2:latest
           # GitHub access token used to create a issue
-          token: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+          token: ${{ secrets.GTHB_TOKEN }}
           # Whether the action should fail if a vulnerability was found
           fail_on_vulnerabilities: false
       #######################################################################################################
