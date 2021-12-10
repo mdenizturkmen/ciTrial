@@ -11,3 +11,4 @@ RUN echo "" && \
     echo "" && \
     echo ""     
     
+CMD echo $MYVAR
