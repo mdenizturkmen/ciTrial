@@ -89,10 +89,7 @@ jobs:
         with:
           image: ${{ secrets.DOCKER_HUB_USERNAME }}/my_base:latest
           args: --file=myfolder/base/Dockerfile
-      - name: Upload result to GitHub Code Scanning
-        uses: github/codeql-action/upload-sarif@v1
-        with:
-          sarif_file: snyk.sarif
+     
       #######################################################################################################
       #######################################################################################################
       - name: Run Snyk to check Docker image for vulnerabilities
@@ -108,10 +105,7 @@ jobs:
         with:
           image: ${{ secrets.DOCKER_HUB_USERNAME }}/my_base_ros_theia:latest
           args: --file=myfolder/base_ros_theia/Dockerfile
-      - name: Upload result to GitHub Code Scanning
-        uses: github/codeql-action/upload-sarif@v1
-        with:
-          sarif_file: snyk.sarif
+      
       #######################################################################################################
       #######################################################################################################
       - name: Run Snyk to check Docker image for vulnerabilities
@@ -127,6 +121,8 @@ jobs:
         with:
           image: ${{ secrets.DOCKER_HUB_USERNAME }}/my_jackal:latest
           args: --file=myfolder/jackal/Dockerfile
+          
+      #######################################################################################################
       - name: Upload result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v1
         with:
