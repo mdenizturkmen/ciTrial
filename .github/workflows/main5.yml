@@ -49,7 +49,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./Dockerfiles/base_ros_theia
-          file: ./Dockerfile
+          file: ./Dockerfiles/base_ros_theia/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/base_ros_theia:latest
        #######################################################################################################
