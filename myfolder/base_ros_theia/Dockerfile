@@ -1,4 +1,4 @@
-FROM my_base:latest
+FROM dnztrkmn/my_base:latest
 
 RUN echo "" && \
     echo "" && \
