@@ -51,7 +51,7 @@ jobs:
           context: ./
           file: ./Dockerfiles/ubuntu20/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/ubuntu20.04:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/ubuntu20.04_nvidia:latest
        #######################################################################################################
       #######################################################################################################
       #######################################################################################################
@@ -67,7 +67,7 @@ jobs:
           # or you can signup for free at https://snyk.io/login
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          image: ${{ secrets.DOCKER_HUB_USERNAME }}/ubuntu20.04:latest
+          image: ${{ secrets.DOCKER_HUB_USERNAME }}/ubuntu20.04_nvidia:latest
           args: --file=Dockerfiles/ubuntu20/Dockerfile
      
       #######################################################################################################
