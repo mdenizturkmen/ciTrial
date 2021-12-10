@@ -49,7 +49,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./Dockerfiles/base
-          file: ./Dockerfile
+          file: ./Dockerfiles/base/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/base:latest
        #######################################################################################################
