@@ -54,7 +54,12 @@ jobs:
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/finealpine:latest
           
       #######################################################################################################
-      
+      - name: Run Snyk to check Docker image for vulnerabilities
+        uses: snyk/actions/docker@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          image: ${{ secrets.DOCKER_HUB_USERNAME }}/finealpine:latest
       #######################################################################################################
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
