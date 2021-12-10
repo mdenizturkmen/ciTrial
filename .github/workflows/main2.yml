@@ -88,7 +88,7 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           image: ${{ secrets.DOCKER_HUB_USERNAME }}/my_base:latest
-          args: --file=Dockerfile
+          args: --file=myfolder/base/Dockerfile
       - name: Upload result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v1
         with:
@@ -107,7 +107,7 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           image: ${{ secrets.DOCKER_HUB_USERNAME }}/my_base_ros_theia:latest
-          args: --file=Dockerfile
+          args: --file=myfolder/base_ros_theia/Dockerfile
       - name: Upload result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v1
         with:
@@ -126,7 +126,7 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           image: ${{ secrets.DOCKER_HUB_USERNAME }}/my_jackal:latest
-          args: --file=Dockerfile
+          args: --file=myfolder/jackal/Dockerfile
       - name: Upload result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v1
         with:
