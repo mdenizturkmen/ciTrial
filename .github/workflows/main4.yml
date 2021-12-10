@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI3
+name: CI4
 
 # Controls when the workflow will run
 on:
@@ -8,7 +8,7 @@ on:
   push:
     branches: [ master ]
     paths: 
-      - 'Dockerfiles/ubuntu20/Dockerfile'
+      - 'Dockerfiles/base/Dockerfile'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
