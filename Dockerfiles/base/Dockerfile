@@ -135,6 +135,5 @@ RUN apt-get clean && \
 USER user
 WORKDIR /home/user
 
-RUN echo "base"
 
 ENTRYPOINT ["/usr/bin/supervisord"]
