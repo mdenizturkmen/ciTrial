@@ -53,9 +53,6 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/my_base:latest
        #######################################################################################################
-      - name: Set up Docker Buildx
-        id: buildx2
-        uses: docker/setup-buildx-action@v1
         
       - name: Build and push
         id: docker_build2
@@ -67,10 +64,6 @@ jobs:
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/my_base_ros_theia:latest
           
        #######################################################################################################
-      - name: Set up Docker Buildx
-        id: buildx3
-        uses: docker/setup-buildx-action@v1
-        
       - name: Build and push
         id: docker_build3
         uses: docker/build-push-action@v2
