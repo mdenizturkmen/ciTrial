@@ -1,4 +1,4 @@
-FROM base_ros_theia_deneme:latest
+FROM my_base_ros_theia:latest
 
 RUN echo "" && \
     echo "" && \

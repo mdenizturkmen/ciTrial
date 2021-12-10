@@ -1,4 +1,4 @@
-FROM base_deneme:latest
+FROM my_base:latest
 
 RUN echo "" && \
     echo "" && \

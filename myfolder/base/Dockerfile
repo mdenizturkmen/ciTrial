@@ -1,6 +1,6 @@
 FROM alpine:3.14
 
-ENV MYVAR mehmet
+ENV MYVAR deniz
 
 RUN echo "" && \
     echo "" && \
