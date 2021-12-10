@@ -1,4 +1,4 @@
-FROM base_ubuntu20.04
+FROM dnztrkmn/base:latest
 # ubuntu 18.04 -> gazebo9
 # ubuntu 20.04 -> gazebo11
 
