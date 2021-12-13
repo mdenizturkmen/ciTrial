@@ -52,6 +52,8 @@ jobs:
           file: ./Dockerfiles/ubuntu20/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/ubuntu20.04_nvidia:latest
+          cache-from: type=registry,ref=dnztrkmn/ubuntu20.04_nvidia:buildcache
+          cache-to: type=registry,ref=dnztrkmn/ubuntu20.04_nvidia:buildcache,mode=max
        #######################################################################################################
       #######################################################################################################
       #######################################################################################################
