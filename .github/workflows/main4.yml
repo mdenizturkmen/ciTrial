@@ -52,6 +52,8 @@ jobs:
           file: ./Dockerfiles/base/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/base:latest
+          cache-from: type=registry,ref=dnztrkmn/base:buildcache
+          cache-to: type=registry,ref=dnztrkmn/base:buildcache,mode=max
        #######################################################################################################
       #######################################################################################################
       #######################################################################################################
