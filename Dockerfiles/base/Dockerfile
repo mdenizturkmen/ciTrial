@@ -136,7 +136,7 @@ RUN apt-get clean && \
 USER user
 WORKDIR /home/user
 
-RUN apt-get autoremove
+RUN sudo apt-get autoremove
 
 #RUN apt-get -y clean && \
 #    sudo apt-get remove -y \
