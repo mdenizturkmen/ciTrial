@@ -112,7 +112,6 @@ RUN apt-get clean && \
     sudo mkdir -p /etc/neko /var/log/neko; sudo chmod 1777 /var/log/neko; sudo chown user:user /var/log/neko/ && \
     sudo mkdir -p /home/user/.config/pulse/ && \
     echo "default-server=unix:/tmp/pulseaudio.socket" > /home/user/.config/pulse/client.conf && \
-    apt-get -y clean && \
     rm -rf /var/lib/apt/lists/* && \
     \
     \
@@ -136,7 +135,6 @@ RUN apt-get clean && \
 USER user
 WORKDIR /home/user
 
-RUN sudo apt-get autoremove
 
 #RUN apt-get -y clean && \
 #    sudo apt-get remove -y \
