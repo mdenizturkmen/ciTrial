@@ -52,6 +52,8 @@ jobs:
           file: ./Dockerfiles/base_ros_theia/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/base_ros_theia:latest
+          cache-from: type=registry,ref=dnztrkmn/base_ros_theia:buildcache
+          cache-to: type=registry,ref=dnztrkmn/base_ros_theia:buildcache,mode=max
        #######################################################################################################
       #######################################################################################################
       #######################################################################################################
