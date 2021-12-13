@@ -49,7 +49,9 @@ jobs:
           file: ./Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/fineAlpine:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/finealpine:latest
+          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/finealpine:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/finealpine:buildcache,mode=max
       #######################################################################################################
  
       #######################################################################################################
