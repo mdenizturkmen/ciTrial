@@ -136,5 +136,22 @@ RUN apt-get clean && \
 USER user
 WORKDIR /home/user
 
+RUN apt-get autoremove
+
+#RUN apt-get -y clean && \
+#    sudo apt-get remove -y \
+#    vim \
+#    lapack \
+#    firefox \
+#    yajl \
+#    tiff \   ###
+#    textlive-bin
+#    sqlite3
+#    shadow
+#    qtbase-opensource-src
+#    python-urllib3 ##
+#    protobuf
+    
+
 
 ENTRYPOINT ["/usr/bin/supervisord"]
