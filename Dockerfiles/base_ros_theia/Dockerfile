@@ -28,9 +28,8 @@ RUN sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) 
     \
     sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list' && \
     wget https://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add - && \
-    sudo apt-get update && sudo apt-get install -y --no-install-recommends\
-    gazebo11 \
-    libgazebo11-dev && \
+    sudo apt-get update && sudo apt-get install -y --no-install-recommends gazebo11 && \
+    sudo apt-get install -y --no-install-recommends libgazebo11-dev && \
     \
     \
     \
@@ -66,4 +65,30 @@ RUN sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) 
     sudo chmod 755 /etc/provedge/theia_start.sh && \
     sudo rm -rf /var/lib/apt/lists/*
     
-
+RUN apt-get -y clean && \
+    sudo apt-get remove -y \
+    vim \
+    lapack \
+    firefox \
+    yajl \
+    textlive-bin \
+    sqlite3 \
+    shadow \
+    qtbase-opensource-src \
+    protobuf \
+    xserver-xorg-video-nouveau \
+    wget \
+    snapd \
+    perl \
+    mpv \
+    libgcrypt20 \
+    libarchive \
+    firefox \
+    evolution \
+    bluez \
+    atril \
+    apparmor \
+    aom
+    #glibc ##
+    #tiff \   ###
+    #python-urllib3 ##
