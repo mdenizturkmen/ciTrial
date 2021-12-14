@@ -1,36 +1,62 @@
-FROM dnztrkmn/base18:latest
+FROM dnztkmn/base18:latest
 # ubuntu 18.04 -> gazebo9
 # ubuntu 20.04 -> gazebo11
 
 WORKDIR /build
-
-ENV ROS_DISTRO noetic
+ENV ROS_DISTRO melodic
 
 COPY theia_supervisord.conf theia_start.sh ./
 
-RUN sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' && \
-    curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add - && \
-    sudo apt update && sudo apt install -y --no-install-recommends\
-    ros-$ROS_DISTRO-ros-base \
-    python3-rosdep \
-    python3-rosinstall \
-    python3-rosinstall-generator \
-    python3-wstool \
-    build-essential && \
-    \
-    \
-    \
-    sudo rosdep init && \
-    rosdep update && \
-    \
-    \
+RUN sudo apt-get update && \
+    sudo apt-get install -q -y --no-install-recommends tzdata && \
+    sudo rm -rf /var/lib/apt/lists/*
+
+# install packages
+RUN sudo apt-get update && sudo apt-get install -q -y --no-install-recommends \
+    dirmngr \
+    gnupg2 \
+    && sudo rm -rf /var/lib/apt/lists/*
+
+# setup sources.list
+RUN sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources.list.d/ros1-latest.list'
+
+# setup keys
+RUN curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+
+# setup environment
+ENV LANG C.UTF-8
+ENV LC_ALL C.UTF-8
+
+# install ros packages
+RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
+    ros-melodic-ros-core=1.4.1-0* \
+    && sudo rm -rf /var/lib/apt/lists/*
+
+
+RUN sudo apt-get update && sudo apt-get install --no-install-recommends -y \
+    build-essential \
+    python-rosdep \
+    python-rosinstall \
+    python-vcstools \
+    && sudo rm -rf /var/lib/apt/lists/*
+
+# bootstrap rosdep
+RUN sudo rosdep init && \
+  rosdep update --rosdistro $ROS_DISTRO
+
+# install ros packages
+RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
+    ros-melodic-ros-base=1.4.1-0* \
+    && sudo rm -rf /var/lib/apt/lists/*
+
+RUN \
     \
     \
     sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list' && \
     wget https://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add - && \
     sudo apt-get update && sudo apt-get install -y --no-install-recommends\
-    gazebo11 \
-    libgazebo11-dev && \
+    gazebo9 \
+    libgazebo9-dev && \
     \
     \
     \
@@ -64,18 +90,6 @@ RUN sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) 
     sudo mv theia_supervisord.conf /etc/provedge/supervisord && \
     sudo mv theia_start.sh /etc/provedge && \
     sudo chmod 755 /etc/provedge/theia_start.sh && \
-    sudo rm -rf /var/lib/apt/lists/*
-    
-RUN apt-get -y clean && \
-    sudo apt-get remove -y \
-    vim \
-    lapack \
-    firefox \
-    yajl \
-    tiff \   ###
-    textlive-bin
-    sqlite3
-    shadow
-    qtbase-opensource-src
-    python-urllib3 ##
-    protobuf
+    apt-get -y clean && \
+    sudo rm -rf /var/lib/apt/lists/* && \
+    sudo deluser user sudo
