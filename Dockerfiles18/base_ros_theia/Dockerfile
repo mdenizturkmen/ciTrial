@@ -91,5 +91,4 @@ RUN \
     sudo mv theia_start.sh /etc/provedge && \
     sudo chmod 755 /etc/provedge/theia_start.sh && \
     apt-get -y clean && \
-    sudo rm -rf /var/lib/apt/lists/* && \
-    sudo deluser user sudo
+    sudo rm -rf /var/lib/apt/lists/*
