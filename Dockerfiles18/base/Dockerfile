@@ -135,6 +135,8 @@ RUN apt-get clean && \
 USER user
 WORKDIR /home/user
 
+RUN echo "hey"
+
 #RUN apt-get -y clean && \
 #    sudo apt-get remove -y \
 #    vim \
