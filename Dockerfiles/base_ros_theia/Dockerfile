@@ -65,3 +65,31 @@ RUN sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) 
     sudo mv theia_start.sh /etc/provedge && \
     sudo chmod 755 /etc/provedge/theia_start.sh && \
     sudo rm -rf /var/lib/apt/lists/*
+    
+RUN apt-get -y clean && \
+    sudo apt-get remove -y \
+    vim \
+    lapack \
+    firefox \
+    yajl \
+    textlive-bin \
+    sqlite3 \
+    shadow \
+    qtbase-opensource-src \
+    protobuf \
+    xserver-xorg-video-nouveau \
+    wget \
+    snapd \
+    perl \
+    mpv \
+    libgcrypt20 \
+    libarchive \
+    firefox \
+    evolution \
+    bluez \
+    atril \
+    apparmor \
+    aom
+    #glibc ##
+    #tiff \   ###
+    #python-urllib3 ##
